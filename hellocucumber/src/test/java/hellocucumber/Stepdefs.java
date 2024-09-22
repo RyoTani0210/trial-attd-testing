@@ -5,6 +5,7 @@ import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
 import static org.junit.jupiter.api.Assertions.*;
 
+//テスト対象クラス
 class IsItFriday {
     static String isItFriday(String today) {
         return "Nope";
@@ -12,10 +13,11 @@ class IsItFriday {
 }
 class IsAllStepPassed {
     static String isSenario(String message) {
-        return "message catched";
+        return "passes";
     }
 }
 
+//ステップ定義
 public class Stepdefs {
     private String today;
     private String actualAnswer;
@@ -46,8 +48,8 @@ public class Stepdefs {
     public void all_step_definitions_are_implemented() {
         actualAnswer = IsAllStepPassed.isSenario(message); //passesが入る
     }
-    @Then("the scenario passes")
-    public void the_scenario_passes() {
-        assertEquals("message catched", actualAnswer);
+    @Then("the scenario {string}")
+    public void the_scenario_passes(String expectedAnswer) {
+        assertEquals(expectedAnswer, actualAnswer);
     }
 }
