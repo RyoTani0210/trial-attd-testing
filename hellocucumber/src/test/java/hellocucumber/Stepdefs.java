@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class IsItFriday {
     static String isItFriday(String today) {
-        return null;
+        return "Nope";
     }
 }
 
@@ -28,5 +28,22 @@ public class Stepdefs {
     @Then("I should be told {string}")
     public void i_should_be_told(String expectedAnswer) {
         assertEquals(expectedAnswer, actualAnswer);
+    }
+
+    // exampleシナリオのStep
+    @Given("an example scenario")
+    public void an_example_scenario() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+    @When("all step definitions are implemented")
+    public void all_step_definitions_are_implemented() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+    @Then("the scenario passes")
+    public void the_scenario_passes() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
     }
 }
