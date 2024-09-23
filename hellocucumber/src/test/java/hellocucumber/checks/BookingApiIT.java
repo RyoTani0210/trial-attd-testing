@@ -68,10 +68,39 @@ public class BookingApiIT{
         Auth auth  = new Auth("admin", "password");
 
         //認証をとる
-        Response authResponse = AuthApi.postAuth(auth);
+        Response authResponse = AuthApi.postAuth(auth);//ここがAuthAPIの死活に依存している
         String authToken = authResponse.getCookie("token");
 
         Response deleteResponse = BookingApi.deleteBooking(createBookingResponse.getBookingid(), authToken);
+        assertEquals(202, deleteResponse.getStatusCode());
+    }
+
+    @Test
+    public void deleteBookingReturns202WithMocks(){
+
+        //テスト準備
+        //ヘッダ組み立て
+        BookingDates dates = new BookingDates(
+            LocalDate.of(2021, 2, 1),
+            LocalDate.of( 2021, 2, 3)
+        );
+        Booking payload = new Booking(
+            1,
+            "Mark",
+            "Hunter",
+            200,
+            true,
+            dates,
+            "a cup of coffee"
+        );
+
+        //予約情報ポスト
+        Response bookingResponse = BookingApi.postBooking(payload);
+        BookingResponse createBookingResponse = bookingResponse.as(BookingResponse.class);
+        
+        //テスト
+        //予約情報削除
+        Response deleteResponse = BookingApi.deleteBooking(createBookingResponse.getBookingid(), "faketoken");
         assertEquals(202, deleteResponse.getStatusCode());
     }
 }
