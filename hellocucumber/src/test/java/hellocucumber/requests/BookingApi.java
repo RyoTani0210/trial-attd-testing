@@ -16,4 +16,8 @@ public class BookingApi extends BaseApi{
                 .when()
                 .post(apiUrl);
     }
+
+    public static Response getTotal() {
+        return given().get(apiUrl + "report");
+    }
 }

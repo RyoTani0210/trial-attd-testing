@@ -1,6 +1,8 @@
 package hellocucumber.stepdefinitions;
 
 import java.time.LocalDate;
+import io.restassured.response.Response;
+import static org.junit.jupiter.api.Assertions.*;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
@@ -40,15 +42,19 @@ public class BookingReportsStepDefs {
         BookingApi.postBooking(payloadTwo);
     };
 
+    private Response totalResponse;
     @When("ユーザーが予約情報を入力する")
     public void i_ask_for_a_report_on_my_total_earnings() {
         System.out.println("When ユーザーが予約情報を入力する");
-        throw new io.cucumber.java.PendingException();
+        totalResponse = hellocucumber.requests.BookingApi.getTotal();
+        System.out.println(totalResponse.toString());
     }
 
     @Then("予約が成功することを確認する")
     public void i_will_receive_a_total_amount_based_on_all_my_bookigs() {
         System.out.println("Then 予約が成功することを確認する");
-        throw new io.cucumber.java.PendingException();
+        int total = totalResponse.as(Total.class).getTotal();
+        System.out.println(total);
+        assertEquals(total, 600);
     }
 }
