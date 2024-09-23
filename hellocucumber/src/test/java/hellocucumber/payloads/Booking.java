@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Booking {
     //予約情報
     @JsonProperty
+    private int roomid;
+    @JsonProperty
     private String firstname;
     @JsonProperty
     private String lastname;
@@ -21,6 +23,7 @@ public class Booking {
     // public Booking() {}
 
     public Booking(
+        int roomid,
         String firstname,
         String lastname,
         int totalprice,
@@ -28,7 +31,7 @@ public class Booking {
         BookingDates bookingdates,
         String additionalneeds
         ) {
-            // this.roomid = roomid;
+            this.roomid = roomid;
             this.firstname = firstname;
             this.lastname = lastname;
             this.totalprice = totalprice;

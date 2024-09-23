@@ -21,6 +21,7 @@ public class BookingReportsStepDefs {
             LocalDate.of(2021,03,31)
         );
         Booking payloadOne =new Booking(
+            1,
             "スズキ",
             "一郎",
             200,
@@ -30,6 +31,7 @@ public class BookingReportsStepDefs {
         );
 
         Booking payloadTwo = new Booking(
+            2,
             "田中",
             "次郎",
             400,

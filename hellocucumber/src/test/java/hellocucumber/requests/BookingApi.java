@@ -9,6 +9,12 @@ public class BookingApi extends BaseApi{
     //ベースURLの宣言
     private static final String apiUrl = baseUrl + "booking/";
 
+    //GETリクエストの送出
+    public static Response getBookingSummary(){
+        return given().get(apiUrl + "summary?roomid=1");
+        
+    }
+
     public static Response postBooking(Booking payload){
         return given()
                 .contentType(ContentType.JSON)
@@ -19,5 +25,10 @@ public class BookingApi extends BaseApi{
 
     public static Response getTotal() {
         return given().get(apiUrl + "report");
+    }
+
+    public static Response deleteBooking(int id, String tokenValue) {
+        return given()
+            .header("Cookie", "token=" + tokenValue).delete(apiUrl + Integer.toString(id));
     }
 }
