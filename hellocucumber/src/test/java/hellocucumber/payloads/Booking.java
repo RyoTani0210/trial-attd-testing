@@ -11,22 +11,24 @@ public class Booking {
     @JsonProperty
     private String lastname;
     @JsonProperty
-    private int totalprice;
-    @JsonProperty
     private boolean depositpaid;
     @JsonProperty
     private BookingDates bookingdates;
     @JsonProperty
     private String additionalneeds;
 
+    // レスポンス作成用
+    @JsonProperty
+    private int bookingid;
+
     //デフォルトコンストラクタ作成
     // public Booking() {}
 
+    //申し込みPosting用
     public Booking(
         int roomid,
         String firstname,
         String lastname,
-        int totalprice,
         boolean depositpaid,
         BookingDates bookingdates,
         String additionalneeds
@@ -34,7 +36,6 @@ public class Booking {
             this.roomid = roomid;
             this.firstname = firstname;
             this.lastname = lastname;
-            this.totalprice = totalprice;
             this.depositpaid = depositpaid;
             this.bookingdates = bookingdates;
             this.additionalneeds = additionalneeds;

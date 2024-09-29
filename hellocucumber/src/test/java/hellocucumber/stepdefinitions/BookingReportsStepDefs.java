@@ -24,7 +24,6 @@ public class BookingReportsStepDefs {
             1,
             "スズキ",
             "一郎",
-            200,
             true,
             dates,
             "breakfast"
@@ -34,7 +33,6 @@ public class BookingReportsStepDefs {
             2,
             "田中",
             "次郎",
-            400,
             true,
             dates,
             "No coffee"

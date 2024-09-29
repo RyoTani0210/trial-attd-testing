@@ -13,4 +13,10 @@ public class BookingResponse {
     public Booking getBooking(){
         return booking;
     }
+
+    // パラメータ付きコンストラクタを追加
+    public BookingResponse(int bookingid, Booking booking){
+        this.bookingid = bookingid;
+        this.booking = booking;
+    }
 }
