@@ -47,7 +47,7 @@ public class BookingReportsStepDefs {
     public void i_ask_for_a_report_on_my_total_earnings() {
         System.out.println("When ユーザーが予約情報を入力する");
         totalResponse = hellocucumber.requests.BookingApi.getTotal();
-        System.out.println(totalResponse.toString());
+        System.out.println(totalResponse.asPrettyString());//{"timestamp":"2024-09-29T04:47:56.107+00:00","status":404,"error":"Not Found","path":"/booking/report"}
     }
 
     @Then("予約が成功することを確認する")
