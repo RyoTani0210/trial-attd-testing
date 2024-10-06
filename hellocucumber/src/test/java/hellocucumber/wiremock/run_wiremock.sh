@@ -1,1 +1,1 @@
-java -jar wiremock-jre8-standalone-3.9.1.jar --port 3005
+java -jar wiremock-standalone-3.9.1.jar --port 3005 --global-response-templating # 動的レスポンスのための設定

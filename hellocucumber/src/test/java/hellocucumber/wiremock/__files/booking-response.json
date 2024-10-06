@@ -1,16 +1,16 @@
 {
-    "bookingid": 4,
+    "bookingid": {{randomInt}},
     "booking": {
-      "roomid": 1,
-      "firstname": "Mock",
-      "lastname": "One",
-      "email": "mock@example.com",
-      "phone": "1234567890",
-      "depositpaid": false,
+      "roomid": {{jsonPath request.body '$.roomid'}},
+      "firstname": "{{jsonPath request.body '$.firstname'}}",
+      "lastname": "{{jsonPath request.body '$.lastname'}}",
+      "email":  "{{jsonPath request.body '$.email'}}",
+      "phone": "{{jsonPath request.body '$.phone'}}",
+      "depositpaid": {{jsonPath request.body '$.depositpaid'}},
       "bookingdates": {
-        "checkin": "2025-02-01",
-        "checkout": "2025-02-03"
+        "checkin": "{{jsonPath request.body '$.bookingdates.checkin'}}",
+        "checkout": "{{jsonPath request.body '$.bookingdates.checkout'}}"
       },
-      "additionalneeds": "a cup of coffee"
+      "additionalneeds":  "{{jsonPath request.body '$.additionalneeds'}}"
     }
 }
