@@ -1,0 +1,1 @@
+java -jar wiremock-jre8-standalone-3.9.1.jar --port 3005

@@ -1,0 +1,29 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "/booking",
+    "headers": {
+      "Content-Type": {
+        "equalTo": "application/json"
+      }
+    },
+    "bodyPatterns": [
+      { "matchesJsonPath": "$.roomid" },
+      { "matchesJsonPath": "$.firstname" },
+      { "matchesJsonPath": "$.lastname" },
+      { "matchesJsonPath": "$.phone"},
+      { "matchesJsonPath": "$.email"},
+      { "matchesJsonPath": "$.depositpaid" },
+      { "matchesJsonPath": "$.bookingdates.checkin" },
+      { "matchesJsonPath": "$.bookingdates.checkout" },
+      { "matchesJsonPath": "$.additionalneeds" }
+    ]
+  },
+  "response": {
+    "status": 201,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+     "bodyFileName": "booking-response.json"
+  }
+}

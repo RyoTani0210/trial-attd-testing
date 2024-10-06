@@ -1,0 +1,16 @@
+{
+    "bookingid": 4,
+    "booking": {
+      "roomid": 1,
+      "firstname": "Mock",
+      "lastname": "One",
+      "email": "mock@example.com",
+      "phone": "1234567890",
+      "depositpaid": false,
+      "bookingdates": {
+        "checkin": "2025-02-01",
+        "checkout": "2025-02-03"
+      },
+      "additionalneeds": "a cup of coffee"
+    }
+}
