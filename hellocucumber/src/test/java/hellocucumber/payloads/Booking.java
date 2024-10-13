@@ -1,7 +1,6 @@
 package hellocucumber.payloads;
 // import com.fasterxml.jackson.annotation.JsonIgnoreType;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.deser.std.StringArrayDeserializer;
 
 public class Booking {
     //予約情報
@@ -15,8 +14,6 @@ public class Booking {
     private String email;
     @JsonProperty
     private String phonenumber;
-
-
     @JsonProperty
     private boolean depositpaid;
     @JsonProperty
@@ -24,9 +21,7 @@ public class Booking {
     @JsonProperty
     private String additionalneeds;
 
-    //デフォルトコンストラクタ作成
-    // public Booking() {}
-
+    //申し込みPosting用
     public Booking(
         int roomid,
         String firstname,

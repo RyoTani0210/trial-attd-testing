@@ -1,15 +1,17 @@
 package hellocucumber.stepdefinitions;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.time.LocalDate;
-import io.restassured.response.Response;
-import static org.junit.jupiter.api.Assertions.*;
 
+import hellocucumber.payloads.Booking;
+import hellocucumber.payloads.BookingDates;
+import hellocucumber.payloads.Total;
+import hellocucumber.requests.BookingApi;
 import io.cucumber.java.en.Given;
-import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
-
-import hellocucumber.payloads.*;
-import hellocucumber.requests.*;
+import io.cucumber.java.en.When;
+import io.restassured.response.Response;
 
 public class BookingReportsStepDefs {
 
@@ -33,20 +35,47 @@ public class BookingReportsStepDefs {
             LocalDate.of(2024,01,01),
             LocalDate.of(2024,03,31)
         );
-        Booking payload = new Booking(
+
+        Booking payloadOne =new Booking(
             1,
-            "ABC",
-            "XYZ",
+            "スズキ",
+            "一郎",
             "abc@example.com",
-            "01234567890",
+            "09012345678",
             true,
             dates,
             "breakfast"
         );
-        System.out.println(payload);
-        Response bookingResult = BookingApi.postBooking(payload);
-        //ステータス確認
-        assertEquals(201,bookingResult.getStatusCode());
-        System.out.println(bookingResult.asPrettyString());
+
+        Booking payloadTwo = new Booking(
+            2,
+            "田中",
+            "次郎",
+            "xyz@ab.com",
+            "1234567890",
+            true,
+            dates,
+            "No coffee"
+        );
+
+        BookingApi.postBooking(payloadOne);
+        BookingApi.postBooking(payloadTwo);
+    };
+
+    private Response totalResponse;
+    @When("ユーザーが予約情報を入力する")
+    public void i_ask_for_a_report_on_my_total_earnings() {
+        System.out.println("When ユーザーが予約情報を入力する");
+        totalResponse = hellocucumber.requests.BookingApi.getTotal();
+        System.out.println(totalResponse.toString());
+    }
+
+    @Then("予約が成功することを確認する")
+    public void i_will_receive_a_total_amount_based_on_all_my_bookigs() {
+        System.out.println("Then 予約が成功することを確認する");
+        int total = totalResponse.as(Total.class).getTotal();
+        System.out.println(total);
+        assertEquals(total, 600);
+>>>>>>> 49c9c61b90dcceed38e554a0b44a6ff2e3598e32
     }
 }
